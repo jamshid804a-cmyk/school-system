@@ -1,0 +1,110 @@
+@import "tailwindcss";
+
+/* ============================================
+   CLASS-BASED DARK MODE (Tailwind v4)
+   ============================================ */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes pop {
+  from { opacity: 0; transform: scale(0.94) translateY(8px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes grow {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+.anim-fade-up { animation: fadeUp 0.45s cubic-bezier(0.2, 0.8, 0.2, 1) backwards; }
+.anim-fade-in { animation: fadeIn 0.25s ease backwards; }
+.anim-pop { animation: pop 0.28s cubic-bezier(0.2, 0.8, 0.2, 1) backwards; }
+.anim-grow { transform-origin: left; animation: grow 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) backwards; }
+
+/* ============================================
+   GLOBAL DARK MODE OVERRIDES
+   When <html class="dark"> is set, these flip the palette
+   ============================================ */
+
+html.dark {
+  color-scheme: dark;
+}
+
+html.dark body {
+  background-color: #0f172a; /* slate-900 */
+  color: #e2e8f0;            /* slate-200 */
+}
+
+/* ---- Surface backgrounds ---- */
+html.dark .bg-white        { background-color: #1e293b !important; }   /* slate-800 */
+html.dark .bg-white\/80    { background-color: rgba(30, 41, 59, 0.8) !important; }
+html.dark .bg-white\/70    { background-color: rgba(30, 41, 59, 0.7) !important; }
+html.dark .bg-white\/10    { background-color: rgba(255, 255, 255, 0.06) !important; }
+html.dark .bg-slate-50     { background-color: #0f172a !important; }
+html.dark .bg-slate-50\/40 { background-color: rgba(15, 23, 42, 0.4) !important; }
+html.dark .bg-slate-50\/60 { background-color: rgba(15, 23, 42, 0.6) !important; }
+html.dark .bg-slate-50\/70 { background-color: rgba(15, 23, 42, 0.7) !important; }
+html.dark .bg-slate-100    { background-color: #1e293b !important; }
+html.dark .bg-slate-200    { background-color: #334155 !important; }
+
+/* ---- Text colors ---- */
+html.dark .text-slate-800 { color: #f1f5f9 !important; }
+html.dark .text-slate-700 { color: #e2e8f0 !important; }
+html.dark .text-slate-600 { color: #cbd5e1 !important; }
+html.dark .text-slate-500 { color: #94a3b8 !important; }
+html.dark .text-slate-400 { color: #64748b !important; }
+html.dark .text-slate-300 { color: #475569 !important; }
+
+/* ---- Borders + rings ---- */
+html.dark .border-slate-200   { border-color: #334155 !important; }
+html.dark .border-slate-100   { border-color: #1e293b !important; }
+html.dark .ring-slate-200     { --tw-ring-color: #334155 !important; }
+html.dark .ring-slate-200\/70 { --tw-ring-color: rgba(51, 65, 85, 0.7) !important; }
+
+/* ---- Inputs, selects, textareas ---- */
+html.dark input,
+html.dark select,
+html.dark textarea {
+  background-color: #0f172a !important;
+  border-color: #334155 !important;
+  color: #f1f5f9 !important;
+}
+html.dark input::placeholder,
+html.dark textarea::placeholder {
+  color: #64748b !important;
+}
+
+/* ---- Tables ---- */
+html.dark thead,
+html.dark .bg-slate-50 thead {
+  background-color: #1e293b !important;
+}
+html.dark tbody tr:hover {
+  background-color: rgba(51, 65, 85, 0.4) !important;
+}
+html.dark table th,
+html.dark table td {
+  border-color: #334155 !important;
+}
+
+/* ---- Sidebar gets deeper ---- */
+html.dark aside {
+  background-color: #020617 !important;
+}
+
+/* ---- Modals / popups ---- */
+html.dark .fixed.bg-white {
+  background-color: #1e293b !important;
+}
+
+/* ---- Info banners (soft colored backgrounds) ---- */
+html.dark .bg-blue-50    { background-color: rgba(30, 58, 138, 0.3) !important; }
+html.dark .bg-amber-50   { background-color: rgba(120, 53, 15, 0.3) !important; }
+html.dark .bg-emerald-50 { background-color: rgba(6, 78, 59, 0.3) !important; }
+html.dark .bg-rose-50    { background-color: rgba(127, 29, 29, 0.3) !important; }

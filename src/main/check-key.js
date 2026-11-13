@@ -1,0 +1,6 @@
+const { DatabaseSync } = require('node:sqlite')
+const path = require('path')
+const p = path.join(process.env.APPDATA, 'school-system', 'school.db')
+const db = new DatabaseSync(p)
+const row = db.prepare("SELECT value FROM settings WHERE key = 'license_key'").get()
+console.log('SAVED LICENSE KEY:', row ? row.value : '(none)')
